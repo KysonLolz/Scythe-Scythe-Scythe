@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Which Scythe Character Are You?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Quiz: Which Scythe Character Are You?</h1>
+    </header>
+
+    <main>
+        <form id="quizForm">
+            <label for="question1">Choose your primary motivation:</label>
+            <select id="question1" name="question1" required>
+                <option value="justice">Justice</option>
+                <option value="power">Power</option>
+                <option value="ethics">Ethics</option>
+            </select>
+
+            <label for="question2">What is your greatest fear?</label>
+            <select id="question2" name="question2" required>
+                <option value="failure">Failure</option>
+                <option value="corruption">Corruption</option>
+                <option value="betrayal">Betrayal</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="result"></div>
+    </main>
+
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let result = "";
+            const motivation = document.getElementById("question1").value;
+            const fear = document.getElementById("question2").value;
+
+            if (motivation === "justice" && fear === "betrayal") {
+                result = "You are Scythe Faraday!";
+            } else if (motivation === "power" && fear === "failure") {
+                result = "You are Scythe Goddard!";
+            } else if (motivation === "ethics" && fear === "corruption") {
+                result = "You are Citra Terranova!";
+            } else {
+                result = "You are Rowan!";
+            }
+
+            document.getElementById("result").innerText = result;
+        });
+    </script>
+</body>
+</html>

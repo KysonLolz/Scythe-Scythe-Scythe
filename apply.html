@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply to Be a Scythe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Apply to Be a Scythe</h1>
+    </header>
+
+    <main>
+        <form id="applicationForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+
+            <label for="resume">Attach Resume (PDF only):</label>
+            <input type="file" id="resume" name="resume" accept=".pdf" required>
+
+            <label for="reason">Why do you want to be a Scythe?</label>
+            <textarea id="reason" name="reason" required placeholder="Explain your motivation..."></textarea>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById("applicationForm").addEventListener("submit", function(event) {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let resume = document.getElementById("resume").files.length;
+            let reason = document.getElementById("reason").value;
+
+            if (!name || !email || !resume || !reason) {
+                alert("Please fill in all fields before submitting.");
+                event.preventDefault();
+            } else {
+                localStorage.setItem("applicantName", name);
+                alert("Your application has been submitted!");
+            }
+        });
+    </script>
+</body>
+</html>
